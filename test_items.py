@@ -9,12 +9,8 @@ link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
 def test_site_languages(browser):
     browser.get(link)
-    # time.sleep(30)
-    try:
-        button = WebDriverWait(browser, 5).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, '[class=\'btn btn-lg btn-primary btn-add-to-basket\']')))
-    except ElementClickInterceptedException as e:
-        print(e.__doc__)
-    else:
-        # assert button.text == 'Añadir al carrito'
-        assert button.text == 'Ajouter au panier'
+    # time.sleep(30)  # while sleep, should to switch language to 'francias' on the site
+    button = WebDriverWait(browser, 5).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, '[class=\'btn btn-lg btn-primary btn-add-to-basket\']')))
+    # assert button.text == 'Ajouter au panier'  # assert for french language
+    assert button.text == 'Añadir al carrito'
