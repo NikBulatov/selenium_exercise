@@ -11,10 +11,9 @@ def test_site_languages(browser):
     browser.get(link)
     # time.sleep(30)
     try:
-        # button = WebDriverWait(browser, 5).until(
-        #     EC.element_to_be_clickable((By.CSS_SELECTOR, '[class=\'btn btn-lg btn-primary btn-add-to-basket\']')))
-        button = browser.find_element(By.CSS_SELECTOR, '[class=\'btn btn-lg btn-primary btn-add-to-basket\']')
-    except Exception as e:
+        button = WebDriverWait(browser, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, '[class=\'btn btn-lg btn-primary btn-add-to-basket\']')))
+    except ElementClickInterceptedException as e:
         print(e.__doc__)
     else:
         # assert button.text == 'Añadir al carrito'
